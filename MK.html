@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MANZI Kennedy — Software Engineering Student and Junior Developer portfolio">
+<title>MANZI Kennedy | Software Engineering Portfolio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root{
+  --bg:#070b14; --surface:#0d1322; --surface2:#111a2d; --text:#f5f7ff;
+  --muted:#9aa7bd; --line:rgba(255,255,255,.09); --accent:#72f2c2;
+  --accent2:#7aa7ff; --glow:rgba(114,242,194,.22);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+body:before{
+  content:"";position:fixed;inset:0;z-index:-3;
+  background:radial-gradient(circle at 15% 15%,rgba(122,167,255,.12),transparent 30%),
+             radial-gradient(circle at 85% 25%,rgba(114,242,194,.10),transparent 28%),
+             radial-gradient(circle at 50% 100%,rgba(128,92,255,.10),transparent 32%);
+}
+body:after{
+  content:"";position:fixed;inset:0;z-index:-2;opacity:.15;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:50px 50px;
+}
+a{color:inherit;text-decoration:none}
+.container{width:min(1120px,92%);margin:auto}
+.nav{
+  position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:20;
+  width:min(1120px,92%);display:flex;align-items:center;justify-content:space-between;
+  padding:12px 16px;border:1px solid var(--line);border-radius:18px;
+  background:rgba(7,11,20,.72);backdrop-filter:blur(18px);box-shadow:0 15px 50px rgba(0,0,0,.25)
+}
+.logo{font-family:"Space Grotesk";font-weight:700;letter-spacing:-.5px}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:6px}
+.nav-links a{font-size:13px;color:var(--muted);padding:8px 12px;border-radius:10px;transition:.25s}
+.nav-links a:hover,.nav-links a.active{color:var(--text);background:rgba(255,255,255,.07)}
+.menu{display:none;background:none;border:0;color:white;font-size:22px}
+
+.page{min-height:100vh;padding:130px 0 70px}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:center;min-height:78vh}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:2px;font-weight:700;margin-bottom:20px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px var(--accent);animation:pulse 1.8s infinite}
+h1{font-family:"Space Grotesk";font-size:clamp(54px,8vw,94px);line-height:.9;letter-spacing:-5px;margin-bottom:25px}
+h1 .outline{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.7)}
+.lead{max-width:650px;color:var(--muted);font-size:17px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{padding:12px 18px;border-radius:12px;border:1px solid var(--line);font-weight:600;font-size:14px;transition:.25s}
+.btn.primary{background:var(--accent);color:#06100c;border-color:var(--accent)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.25)}
+.hero-card{
+  position:relative;min-height:420px;border:1px solid var(--line);border-radius:28px;
+  background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+  display:flex;align-items:center;justify-content:center;overflow:hidden
+}
+.hero-card:before,.hero-card:after{content:"";position:absolute;border:1px solid rgba(114,242,194,.25);border-radius:50%;animation:orbit 12s linear infinite}
+.hero-card:before{width:330px;height:330px}
+.hero-card:after{width:430px;height:430px;animation-direction:reverse;animation-duration:18s;border-color:rgba(122,167,255,.18)}
+.avatar{width:170px;height:170px;border-radius:50%;display:block;position:relative;z-index:2;
+  object-fit:cover;object-position:center;border:1px solid rgba(255,255,255,.3);
+  box-shadow:0 0 70px var(--glow);animation:float 4s ease-in-out infinite}
+.status{position:absolute;bottom:28px;left:28px;right:28px;padding:15px;border-radius:16px;background:rgba(7,11,20,.75);
+  border:1px solid var(--line);backdrop-filter:blur(12px);display:flex;justify-content:space-between;font-size:12px}
+.status span{color:var(--muted)}
+
+.section-title{font-family:"Space Grotesk";font-size:clamp(34px,5vw,54px);letter-spacing:-2px;margin-bottom:10px}
+.section-sub{color:var(--muted);max-width:650px;margin-bottom:40px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{padding:25px;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:20px;transition:.3s}
+.card:hover{transform:translateY(-7px);border-color:rgba(114,242,194,.3);background:rgba(255,255,255,.055)}
+.card-number{color:var(--accent);font-size:12px;font-weight:700;margin-bottom:18px}
+.card h3{font-family:"Space Grotesk";font-size:21px;margin-bottom:8px}
+.card p{font-size:14px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px}
+.tag{font-size:11px;color:#c8d1df;border:1px solid var(--line);padding:5px 8px;border-radius:8px;background:rgba(255,255,255,.025)}
+
+.page-two{padding-top:115px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.timeline{position:relative;padding-left:25px}
+.timeline:before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--line)}
+.item{position:relative;padding:0 0 32px 20px}
+.item:before{content:"";position:absolute;left:-24px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 15px var(--glow)}
+.item .date{font-size:12px;color:var(--accent);font-weight:700;margin-bottom:5px}
+.item h3{font-family:"Space Grotesk";font-size:19px}
+.item p{color:var(--muted);font-size:14px}
+
+.skill-list{display:grid;gap:14px}
+.skill-row{padding:18px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.03)}
+.skill-head{display:flex;justify-content:space-between;margin-bottom:10px;font-size:13px;font-weight:600}
+.bar{height:5px;background:rgba(255,255,255,.07);border-radius:10px;overflow:hidden}
+.bar i{display:block;height:100%;width:var(--w);background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:10px;transform:scaleX(0);transform-origin:left;transition:1.2s ease}
+.visible .bar i{transform:scaleX(1)}
+
+.awards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:25px}
+.award{min-height:170px;padding:22px;border-radius:18px;border:1px solid var(--line);background:linear-gradient(135deg,rgba(122,167,255,.08),rgba(114,242,194,.035))}
+.award .icon{font-size:22px;margin-bottom:18px}
+.award h3{font-family:"Space Grotesk";font-size:17px;margin-bottom:6px}
+.award p{font-size:13px;color:var(--muted)}
+
+.contact{margin-top:80px;padding:40px;border-radius:25px;border:1px solid var(--line);background:linear-gradient(120deg,rgba(114,242,194,.08),rgba(122,167,255,.08))}
+.contact-row{display:flex;justify-content:space-between;gap:25px;align-items:center}
+.contact h2{font-family:"Space Grotesk";font-size:36px;letter-spacing:-1.5px}
+.contact p{color:var(--muted);font-size:14px;margin-top:6px}
+.contact-links{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.contact-links a{font-size:12px;border:1px solid var(--line);padding:9px 12px;border-radius:10px}
+
+footer{padding:35px 0;color:#68758a;font-size:12px;display:flex;justify-content:space-between;border-top:1px solid var(--line);margin-top:70px}
+
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .7s ease,transform .7s ease}
+.reveal.show{opacity:1;transform:none}
+@keyframes float{50%{transform:translateY(-12px)}}
+@keyframes pulse{50%{transform:scale(1.5);opacity:.5}}
+@keyframes orbit{to{transform:rotate(360deg)}}
+
+@media(max-width:800px){
+  .nav-links{display:none}.menu{display:block}
+  .nav.open .nav-links{display:flex;position:absolute;top:60px;left:0;right:0;flex-direction:column;padding:10px;background:rgba(7,11,20,.95);border:1px solid var(--line);border-radius:15px}
+  .hero,.two-col{grid-template-columns:1fr;gap:35px}.hero{padding-top:20px}
+  .hero-card{min-height:320px}.grid,.awards{grid-template-columns:1fr}
+  h1{letter-spacing:-3px}.contact-row{flex-direction:column;align-items:flex-start}.contact-links{justify-content:flex-start}
+}
+</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <a class="logo" href="#home">MK<span>.</span></a>
+  <div class="nav-links">
+    <a href="#home" class="active">Home</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#awards">Awards</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="menu" id="menu" aria-label="Open menu">☰</button>
+</nav>
+
+<main>
+<section class="page" id="home">
+  <div class="container hero">
+    <div class="reveal">
+      <div class="eyebrow"><i class="dot"></i> Software Engineering Student</div>
+      <h1>MANZI<br><span class="outline">Kennedy</span></h1>
+      <p class="lead">Detail-oriented Software Engineering student and junior developer building practical solutions with Python, Java, databases, web technologies and modern software development practices.</p>
+      <div class="actions">
+        <a class="btn primary" href="#skills">Explore my skills ↗</a>
+        <a class="btn" href="mailto:manzikennedy03@gmail.com">Let's connect</a>
+      </div>
+    </div>
+    <div class="hero-card reveal">
+      <img class="avatar" src="MK.jpeg" alt="MK portrait">
+      <div class="status"><span>Based in</span><strong>Kigali, Rwanda</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="skills">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">01 — Expertise</div>
+      <h2 class="section-title">A developer with a<br>growing technical toolkit.</h2>
+      <p class="section-sub">From programming fundamentals to databases, UI development, Linux administration and networking, my foundation is focused on building reliable software and learning continuously.</p>
+    </div>
+    <div class="grid">
+      <article class="card reveal"><div class="card-number">01</div><h3>Programming</h3><p>Java and Python development with object-oriented programming, exception handling and strong programming fundamentals.</p><div class="tags"><span class="tag">Java</span><span class="tag">Python</span><span class="tag">OOP</span><span class="tag">Algorithms</span></div></article>
+      <article class="card reveal"><div class="card-number">02</div><h3>Web Development</h3><p>Building web interfaces and applications with core web technologies and Django.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">PHP</span><span class="tag">Django</span></div></article>
+      <article class="card reveal"><div class="card-number">03</div><h3>Data & Systems</h3><p>Database management, SQL/PLSQL, Linux/system administration and network infrastructure fundamentals.</p><div class="tags"><span class="tag">SQL</span><span class="tag">PLSQL</span><span class="tag">Linux</span><span class="tag">Networks</span></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="page page-two" id="education">
+  <div class="container">
+    <div class="eyebrow reveal">02 — Journey</div>
+    <div class="two-col">
+      <div class="reveal">
+        <h2 class="section-title">Education</h2>
+        <p class="section-sub">Academic training shaping my approach to software engineering and technology.</p>
+        <div class="timeline">
+          <div class="item"><div class="date">2024 — PRESENT</div><h3>AUCA — Adventist University of Central Africa</h3><p>Bachelors of Information Technology in Software Engineering · Kigali, Rwanda</p></div>
+          <div class="item"><div class="date">2019 — 2023</div><h3>Groupe Scolaire Officiel de Butare</h3><p>A2 Certificate in Physics, Chemistry and Mathematics</p></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <h2 class="section-title">Core skills</h2>
+        <div class="skill-list">
+          <div class="skill-row"><div class="skill-head"><span>Java & Python</span><span>Core</span></div><div class="bar"><i style="--w:88%"></i></div></div>
+          <div class="skill-row"><div class="skill-head"><span>Database & SQL</span><span>Core</span></div><div class="bar"><i style="--w:84%"></i></div></div>
+          <div class="skill-row"><div class="skill-head"><span>Web Development</span><span>Core</span></div><div class="bar"><i style="--w:80%"></i></div></div>
+          <div class="skill-row"><div class="skill-head"><span>Git, Jira & Slack</span><span>Tools</span></div><div class="bar"><i style="--w:76%"></i></div></div>
+          <div class="skill-row"><div class="skill-head"><span>AI / ML & Cybersecurity Basics</span><span>Learning</span></div><div class="bar"><i style="--w:68%"></i></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page page-two" id="awards">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">03 — Recognition</div>
+      <h2 class="section-title">Certificates & Awards</h2>
+      <p class="section-sub">Selected training and certifications supporting my development as a software engineering student.</p>
+    </div>
+    <div class="awards">
+      <article class="award reveal"><div class="icon">✦</div><h3>Software Development</h3><p>Academic Certificate in Software Development by NATCOM.</p></article>
+      <article class="award reveal"><div class="icon">⌁</div><h3>NetOps 1 & 2</h3><p>Certificate by Internet Society and AUCA.</p></article>
+      <article class="award reveal"><div class="icon">◇</div><h3>AI/ML & Cybersecurity</h3><p>Beginner-level certificate in AI/ML and Cybersecurity by DTP.</p></article>
+    </div>
+
+    <div class="contact reveal" id="contact">
+      <div class="contact-row">
+        <div><h2>Let's build something.</h2><p>Open to learning, collaboration and opportunities in software development.</p></div>
+        <div class="contact-links">
+          <a href="mailto:manzikennedy03@gmail.com">Email</a>
+          <a href="tel:+250789776822">Call</a>
+          <a href="https://www.linkedin.com/in/manzi-kennedy/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="https://github.com/Manzi-Kennedy" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <footer><span>© 2026 MANZI Kennedy</span><span>Software Engineering · Kigali, Rwanda</span></footer>
+  </div>
+</section>
+</main>
+
+<script>
+const nav=document.getElementById('nav');
+document.getElementById('menu').addEventListener('click',()=>nav.classList.toggle('open'));
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{if(entry.isIntersecting) entry.target.classList.add('show','visible')});
+},{threshold:.12});
+document.querySelectorAll('.reveal,.skill-list').forEach(el=>observer.observe(el));
+
+const sections=[...document.querySelectorAll('section[id]')];
+const links=[...document.querySelectorAll('.nav-links a')];
+window.addEventListener('scroll',()=>{
+  let current='home';
+  sections.forEach(s=>{if(scrollY>=s.offsetTop-180) current=s.id});
+  links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current));
+});
+</script>
+</body>
+</html>
